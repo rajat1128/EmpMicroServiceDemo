@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using EmpMicroserviceDemo.Model;
 
 namespace EmpMicroserviceDemo
 {
@@ -25,7 +26,8 @@ namespace EmpMicroserviceDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddDbContext<EmployeeContext>();   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
